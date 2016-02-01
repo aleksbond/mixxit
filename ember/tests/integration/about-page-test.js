@@ -4,7 +4,7 @@ import startApp from '../helpers/start-app';
 
 var App;
 
-module('Integration - Landing Page', {
+module('Integration - About Page', {
   beforeEach: function() {
     App = startApp();
   },
@@ -13,8 +13,10 @@ module('Integration - Landing Page', {
   }
 });
 
-test('Should welcome me to Mixxit', function(assert) {
+test('Should navigate to the About page', function(assert) {
   visit('/').then(function() {
-    assert.equal(find('h2#title').text(), 'Welcome to Mixxit');
+    click("a:contains('About')").then(function() {
+      assert.equal(find('h3').text(), 'About');
+    });
   });
 });
